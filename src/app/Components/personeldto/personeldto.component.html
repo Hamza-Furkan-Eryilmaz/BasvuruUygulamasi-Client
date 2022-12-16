@@ -1,0 +1,41 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ad Soyad</th>
+            <th>Şehir</th>
+            <th>İlçe</th>
+            <th>Cinsiyet</th>
+            <th>Doğum Tarihi</th>
+            <th>Açıklama</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr [class]="getCurrentPersonelClass(personel.id)" (click)="setCurrentPersonel(personel.id)" *ngFor="let personel of personelDtos " >                   
+            <td>{{personel.adSoyad}}</td>
+            <td>{{personel.sehirAdi}}</td>
+            <td>{{personel.ilceAdi}}</td>
+            <td>{{personel.cinsiyet}}</td>
+            <td>{{personel.dogumTarihi | date }}</td>
+            <td>{{personel.aciklama}}</td>
+            <td><button  *ngIf="currentPersonelId==personel.id" type="button" class="btn btn-primary"  routerLink="/personelIsBasvurulari/getByPersonelId/{{personel.id}}" >Başvuruları Görüntüle</button></td>
+            <td><button *ngIf="currentPersonelId==personel.id" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#addBasvuruModal"   >Başvuru Ekle</button></td>
+        </tr>
+       
+    </tbody> 
+</table>
+
+<!-- AddBasvuruModal -->
+<div class="modal fade" id="addBasvuruModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addBasvuruModal">Başvuru Ekle</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <app-basvuru-add [personelId]="currentPersonelId"></app-basvuru-add>
+        </div>             
+      </div>
+    </div>
+  </div>
+

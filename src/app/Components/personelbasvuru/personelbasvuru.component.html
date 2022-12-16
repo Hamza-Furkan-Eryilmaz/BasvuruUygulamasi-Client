@@ -1,0 +1,22 @@
+<table class=" table table-striped">
+    <thead>
+        <tr >
+            <th>Basvuru Tarihi</th>
+            <th>Şehir</th>
+            <th>İş Yeri Adı</th>
+            <th>Pozisyon</th>
+            <th>Açıklama</th>
+            <th>Seyahat Engelim Yok</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let basvuru of basvurular  " >                   
+            <td>{{basvuru.basvuruTarihi | date}}</td>
+            <td>{{basvuru.sehirAdi}}</td>
+            <td>{{basvuru.isYeriAdi}}</td>
+            <td>{{basvuru.pozisyon}}</td>
+            <td>{{basvuru.aciklama}}</td>
+            <td>{{basvuru.seyahatEngeliYok}}</td>         
+        </tr>       
+    </tbody> 
+</table>

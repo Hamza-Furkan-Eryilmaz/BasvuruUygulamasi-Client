@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="content">
+        <div class="col-md-12">
+           <form [formGroup]="basvuruAddForm">  
+            <label for="personelId">Personel Id</label>
+            <div class="form-group">
+                <input readonly type="number" formControlName="personelId" [(ngModel)]="personelId">
+            </div>
+            <label for="basvuruTarihi">Başvuru Tarihi</label>
+            <div class="form-group">
+                <div>
+                    <input type="date" formControlName="basvuruTarihi">
+                </div>
+            </div>                        
+                <label for="isYeriAdi">İş Yeri Adı</label>
+                <div class="form-group">
+                    <input type="text" formControlName="isYeriAdi">
+                </div>
+                <label for="pozisyon">Pozisyon</label>
+                <div class="form-group">
+                    <input type="text" formControlName="pozisyon">
+                </div>
+                <label for="sehirId">Şehir</label>
+                <select class="form-select" formControlName="sehirId">
+                    <option disabled selected>Şehir</option>
+                    <option *ngFor="let sehir of sehirler" [ngValue]="sehir.id" >{{sehir.adi}}</option>
+                </select>
+                <label for="seyahatEngeliYok">Seyahat Engelim Yok</label>
+                <div class="form-group">
+                    <input type="checkbox" formControlName="seyahatEngeliYok" >
+                </div>
+                <label for="aciklama">Açıklama</label>
+                <div class="form-group">
+                    <textarea formControlName="aciklama" cols="20" rows="5"></textarea>
+                </div>  
+                <div>
+                    <button type="submit" class="btn btn-secondary" (click)="add()">Başvuru Ekle</button>
+                </div>
+           </form>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,65 @@
+
+<div class="container">
+  <div class="content">
+      <div class="col-md-12">
+         <form [formGroup]="personelAddForm">   
+          <label for="adiSoyadi">Ad Soyad</label>     
+          <div class="col-md-4">
+            <input type="text"
+                         id="adSoyad" 
+                         formControlName="adiSoyadi"
+                          class="form-control "
+                          />
+          </div>    
+          <label for="dogumTarihi">Doğum Tarihi</label>
+          <div class="form-group">
+              <div>
+                  <input type="date" formControlName="dogumTarihi">
+              </div>
+          </div>    
+          <label for="sehirId">Şehir</label>
+          <div class="col-md-4">
+            <select  (change)="onChangeCity($any($event.target).value)" class="form-select" formControlName="sehirId" aria-label="Default select example">
+              <option selected disabled >Şehir</option>
+              <option  *ngFor="let sehir of sehirler"   [value]="sehir.id"  >{{sehir.adi}}</option>
+              
+            </select>
+          </div>
+            <label for="ilceId">İlçe</label>
+                     <div>
+                      <div class="col-md-4">
+                        <select class="form-select"  formControlName="ilceId" aria-label="Default select example" >
+                          <option disabled >İlçe</option>
+                          <option   *ngFor="let ilce of ilceler"  [value]="ilce.id"  >{{ilce.adi}}</option>
+                        </select> 
+                      </div>
+                         
+                     </div>
+                     <label class="form-check-label">Cinsiyet</label>
+                     <div>
+                           <div class="form-check">
+                       <input class="form-check-input" formControlName="cinsiyet" value="Kadın" type="radio"  id="Kadın">
+                       <label class="form-check-label" for="Kadın">
+                         Kadın
+                       </label>
+                     </div>
+                     <div class="form-check">
+                       <input class="form-check-input" formControlName="cinsiyet" value="Erkek" type="radio"  id="Erkek" checked>
+                       <label class="form-check-label" for="Erkek">
+                         Erkek
+                       </label>
+                     </div>
+                     </div>
+                 <label for="aciklama">Açıklama</label>
+                 <div class="form-group">
+                  <textarea formControlName="aciklama" cols="40" rows="5"></textarea>
+                </div>  
+                <div>
+                  <button id="eklebtn" class="btn btn-fill btn-primary" type="submit" routerLink="" (click)="add()">EKLE</button>
+              </div>
+         </form>
+      </div>
+
+  </div>
+
+</div>
